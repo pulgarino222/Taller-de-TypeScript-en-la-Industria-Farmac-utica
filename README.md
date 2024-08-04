@@ -84,3 +84,9 @@ Como analista de datos, quiero poder analizar los datos de tratamientos para ide
 - Utilizar funciones y métodos estáticos para realizar análisis y exportar datos.
 - Asegurar que los métodos verifican el tipo de datos y realizan las operaciones necesarias.
 - Utilizar bibliotecas de terceros como `csv-writer` para exportar los datos en formato CSV.
+
+#ruta para manejar medicamentos 
+http://localhost:3000/appi/auth/medications
+#ruta para manejar usuarios(register)
+http://localhost:3000/appi/users
+#ruta para loguarse y que te entregue el toquen ya sea para manejo de medicamnetos(gerente), informacion de pacientes(doctor), analista de datos
