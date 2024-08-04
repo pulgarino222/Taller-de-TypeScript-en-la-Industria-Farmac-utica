@@ -87,6 +87,28 @@ Como analista de datos, quiero poder analizar los datos de tratamientos para ide
 
 #ruta para manejar medicamentos 
 http://localhost:3000/appi/auth/medications
+
+{
+    "medicationName":"acetamimayfrined",
+    "quantity":200,
+    "expirationDate":"2024-08-04",
+    "price":2500,
+    "patientId":4
+  
+  }
 #ruta para manejar usuarios(register)
+{
+    "name":"camila",
+    "lastname":"zapata",
+    "email":"example3@example3",
+    "password":"example",
+    "position":"administrador"
+}
+nota si es "paciente" es necesario agregar :
+ age:number,
+    frecuency:number
+    endDateMedication:Date
+
+
 http://localhost:3000/appi/users
 #ruta para loguarse y que te entregue el toquen ya sea para manejo de medicamnetos(gerente), informacion de pacientes(doctor), analista de datos
