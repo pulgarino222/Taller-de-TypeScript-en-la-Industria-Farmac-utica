@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { Security } from "../services/security";
 
+
 const SecurityServiceForUse=container.resolve(Security)
 
 export class ControllAccess{
@@ -13,8 +14,11 @@ export class ControllAccess{
         const password=req.body.password
           const canAccess= await SecurityServiceForUse.authorize(email,password)
           if(canAccess){
+            const token=await SecurityServiceForUse.generateToken(email)
             resp.status(201).json({
-                message:"welcome login successfully your token was generated"
+                message:"welcome login successfully your token was generated",
+                token
+
             })
           }else{
             resp.status(500).json({
