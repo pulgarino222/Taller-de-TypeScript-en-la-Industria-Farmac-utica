@@ -2,11 +2,14 @@ import express, { Router } from 'express'
 import env from 'dotenv'
 import sequelize from "./config/db";
 import {router} from './routes/router'
+import corsConfig from './middleware/cors';
 
 const server = express()
 server.use(express.json())
 env.config()
+// server.use(corsConfig)
 server.use('/appi',router)
+
 const PORT = process.env.PORT || 3001
 
 const startserver = async () => {

@@ -29,8 +29,6 @@ export class ControllAccess{
       } catch (error) {
           console.log("desde el controlador",error)
       }
-        
-          
           
     }
 

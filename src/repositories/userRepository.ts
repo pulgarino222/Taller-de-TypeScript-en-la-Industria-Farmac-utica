@@ -67,7 +67,7 @@ export class userRepository{
                 }
             })
         } catch (error) {
-            
+            console.log(error)
         }
     }
 

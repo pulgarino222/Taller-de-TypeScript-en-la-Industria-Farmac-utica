@@ -19,7 +19,7 @@ export class Security {
     async generateToken(data:string){
         // const options: SignOptions = {
         //     algorithm: 'HS256',
-        //     expiresIn: '1h',
+        //     expiresIn: '1h',+
         //     audience: 'example.com',
         //     issuer: 'your-app',
         //     subject: 'user-authentication'

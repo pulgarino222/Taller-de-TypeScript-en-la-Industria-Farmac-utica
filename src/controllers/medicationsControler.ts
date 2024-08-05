@@ -40,4 +40,36 @@ export class ControllersMedications{
             throw new Error(error)
         }
     }
+
+    static async medicationUpdated(req:Request,res:Response){
+        try {
+            const Medication=req.body
+        const id:number=parseInt(req.params.id)
+        const infoMedication= await ServiceMedicationsContain.updateMedicatons(Medication,id)
+        res.status(201).json({
+            message:"Medication updated",
+            infoMedication
+        })    
+        } catch (error) {
+          console.log(error)  
+        }  
+    }
+
+    static async MedicationDelete(req:Request,resp:Response){
+        try {
+            const id:number=parseInt(req.params.id)
+            const deleted= await ServiceMedicationsContain.deleteByIdService(id)
+            resp.status(201).json({
+                message:'successfull',
+                deleted
+            })   
+        } catch (error) {
+            console.log(error)
+        }  
+    }
+
+
+
+
+    
 }

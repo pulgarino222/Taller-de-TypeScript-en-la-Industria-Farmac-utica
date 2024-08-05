@@ -42,7 +42,6 @@ export class medications extends Model {
   @Column({
     type: DataType.DATE,
     allowNull: false,
-    unique: true
   })
   expirationDate!: Date;
 
