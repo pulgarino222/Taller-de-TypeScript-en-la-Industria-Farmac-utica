@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001
 const startserver = async () => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync()//sincroniza la base de datos con los modelos si ya exite la tabla no la crea si no existe la crea 
+        await sequelize.sync()//sincroniza la base de datos con los modelos si ya exite la tabla no la crea si no existe la crea { alter: true }
         console.log("Database connected!")
         server.listen(PORT, () => {
             console.log(`server executted in http://localhost:${PORT}`)

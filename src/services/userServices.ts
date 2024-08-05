@@ -2,6 +2,8 @@ import { userRepository } from "../repositories/userRepository";
 import { inject,injectable } from "tsyringe";
 import { Tableusers } from "../models/tableUsers";
 
+
+
 @injectable()
 export class UserService{
     // private userRepository:userRepository
@@ -56,6 +58,11 @@ export class UserService{
         }
         
       }
+
+    
+
+
+    
 
        
 

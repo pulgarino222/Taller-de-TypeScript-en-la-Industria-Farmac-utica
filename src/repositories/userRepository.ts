@@ -1,7 +1,9 @@
-import { table } from "console";
+
 import { Tableusers } from "../models/tableUsers";
+import { Patients } from "../models/tablePatients";
 import { injectable } from 'tsyringe';
-import { where } from "sequelize";
+
+
 
 @injectable()
 export class userRepository{
@@ -9,17 +11,34 @@ export class userRepository{
         return await Tableusers.findAll()
     }
 
+    async findByEmail(email:string){
+        return await Tableusers.findOne({
+            where:{
+                email:email
+            }
+        })
+        
+    }
+
+
     async findById(id:number){
         try {
-            return await Tableusers.findByPk(id)
+            const wanted= await Tableusers.findByPk(id)
+            return wanted
         } catch (error:any) {
             throw new Error(error.message)
         }
         
     }
     async createdNewUser(user: Partial<Tableusers>){
+        let tableCreated:any;
         try{
+            if(user.position==="paciente"){
+               tableCreated=await Patients.create(user)
+               
+            }
             return await Tableusers.create(user)
+
         }catch(error:any){
             console.log('ah ocurrido un error',error)
         }

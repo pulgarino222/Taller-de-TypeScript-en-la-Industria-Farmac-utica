@@ -20,6 +20,8 @@ import { medications } from './tableMedications'
     timestamps:true
 })
 
+
+
 export class Patients extends Tableusers{
     @Column({
         type: DataType.STRING,
@@ -28,16 +30,16 @@ export class Patients extends Tableusers{
       age!:string
 
       @Column({
-        type: DataType.NUMBER,
+        type: DataType.INTEGER,
         allowNull: false,
       })
       frecuency!:number
 
       @Column({
-        type: DataType.DATE,
+        type: DataType.STRING,
         allowNull: false,
       })
-      endDateMedication!:Date
+      endDateMedication!:string
 
       @HasMany(()=>medications)
       medications!:medications[]

@@ -1,9 +1,10 @@
 import { container } from "tsyringe";
 import {UserService} from "../services/userServices";
 import { Request, Response } from "express";
-import { NUMBER } from "sequelize";
+import { Security } from "../services/security";
 
 const userServices = container.resolve(UserService)
+const SecurityService= container.resolve(Security)
 export class UserController{
    static async getAllUsers(__:Request,res:Response){
         const users= await userServices.getAllUsers()
@@ -15,9 +16,7 @@ export class UserController{
     static async getUserById(req:Request,resp:Response){
         try {
             const id:number=parseInt(req.params.id)
-            console.log(id)
             const user= await userServices.findUserById(id)
-            console.log(user)
             resp.status(201).json({
                 message:"user finded in your screen",
                 user
@@ -31,7 +30,11 @@ export class UserController{
     
     static async newUserRegister(req:Request,res:Response){
         try{
-            const userCreated= await userServices.createUser(req.body)
+            let cifrated= await SecurityService.encriptPassword(req.body.password)
+            const userCreated= await userServices.createUser({
+                ...req.body,
+                password:cifrated
+            })
         res.status(201).json(userCreated);
         console.log(userCreated)
         }catch(error:any){
@@ -61,8 +64,7 @@ export class UserController{
                 message:'successfull',
                 deleted
 
-            })
-            
+            })   
         } catch (error) {
             console.log(error)
         }
