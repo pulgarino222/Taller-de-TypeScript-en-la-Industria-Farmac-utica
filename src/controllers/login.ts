@@ -15,9 +15,9 @@ export class ControllAccess{
           const canAccess= await SecurityServiceForUse.authorize(email,password)
           if(canAccess){
             const token=await SecurityServiceForUse.generateToken(email)
-            resp.status(201).json({
-                message:"welcome login successfully your token was generated",
-                token
+            resp.header('athorization',token).status(201).json({
+                message:"welcome login successfully your token was generated is in header",
+                
 
             })
           }else{
